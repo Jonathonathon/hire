@@ -1,0 +1,142 @@
+/* Base Styles */
+body.body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #f5f7fa;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+}
+
+/* Header */
+.header {
+  background-color: #1a1a2e;
+  color: #fff;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.site-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  color: #c4c4c4;
+}
+
+/* Hero Section */
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.profile-image {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #1a1a2e;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  color: #1a1a2e;
+  margin-bottom: 0.75rem;
+}
+
+.intro-text {
+  max-width: 700px;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Experience Section */
+.experience-container {
+  padding-top: 2rem;
+}
+
+.job {
+  margin-bottom: 2rem;
+}
+
+.job-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #111;
+}
+
+.job-dates {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #777;
+}
+
+.job-description {
+  margin-top: 0.5rem;
+  color: #444;
+}
+
+/* Contact CTA */
+.contact-container {
+  background-color: #1a1a2e;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+
+.contact-text {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.contact-button {
+  background-color: #e94560;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+.contact-button:hover {
+  background-color: #d73753;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #0f0f1c;
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .hero-container {
+    flex-direction: row;
+    text-align: left;
+    justify-content: center;
+  }
+
+  .hero-text {
+    padding-left: 2rem;
+    max-width: 500px;
+  }
+}
