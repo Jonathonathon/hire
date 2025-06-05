@@ -18,13 +18,12 @@ body.body {
 .header {
   background-color: #1a1a2e;
   color: #fff;
-  padding: 2rem 0;
   text-align: center;
 }
 
 .site-title {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  font-size: 4rem;
+  margin-bottom: 0rem;
 }
 
 .tagline {
@@ -76,6 +75,11 @@ body.body {
   color: #111;
 }
 
+.job-company {
+  font-size: 1.1rem;
+  color: #111;
+}
+
 .job-dates {
   font-style: italic;
   font-size: 0.95rem;
@@ -88,6 +92,11 @@ body.body {
 }
 
 /* Contact CTA */
+
+.contact-section {
+
+}
+
 .contact-container {
   background-color: #1a1a2e;
   color: #fff;
@@ -97,9 +106,15 @@ body.body {
   margin-top: 2rem;
 }
 
+.contact-title {
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
 .contact-text {
   font-size: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .contact-button {
@@ -138,5 +153,401 @@ body.body {
   .hero-text {
     padding-left: 2rem;
     max-width: 500px;
+
   }
 }
+
+/* Skills Section */
+.skills {
+  background-color: #f0f2f5;
+  padding: 2rem 0;
+  margin-top: 2rem;
+}
+
+.skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.skill-item {
+  background-color: #fff;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid #1a1a2e;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  font-size: 1rem;
+  color: #333;
+}
+
+@media (min-width: 600px) {
+  .skills-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Footer Social Icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.social-link {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.social-link:hover {
+  transform: scale(1.1);
+}
+
+.social-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.footer {
+  background-color: #222;
+  color: #ccc;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+  .social-icons {
+    gap: 0.75rem;
+  }
+
+  .social-img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* ------------- */
+/* - Cat Cards - */
+/* ------------- */
+
+@import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
+
+.page-content {
+  display: grid;
+  grid-gap: 1rem;
+  padding: 1rem;
+  max-width: 1024px;
+  margin: 0 auto;
+  font-family: "Rubik", sans-serif;
+}
+
+@media (min-width: 600px) {
+  .page-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 800px) {
+  .page-content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: 1rem;
+  width: 80%;
+  text-align: center;
+  color: whitesmoke;
+  background-color: whitesmoke;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
+              0 2px 2px rgba(0, 0, 0, 0.1),
+              0 4px 4px rgba(0, 0, 0, 0.1),
+              0 8px 8px rgba(0, 0, 0, 0.1),
+              0 16px 16px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 600px) {
+  .card {
+    height: 350px;
+  }
+}
+
+.card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  background-size: cover;
+  background-position: center center;
+  transition: transform calc(700ms * 1.5) cubic-bezier(0.19, 1, 0.22, 1);
+  pointer-events: none;
+}
+.card:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  pointer-events: none;
+  background-image: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.009) 11.7%,
+    rgba(0, 0, 0, 0.034) 22.1%,
+    rgba(0, 0, 0, 0.072) 31.2%,
+    rgba(0, 0, 0, 0.123) 39.4%,
+    rgba(0, 0, 0, 0.182) 46.6%,
+    rgba(0, 0, 0, 0.249) 53.1%,
+    rgba(0, 0, 0, 0.32) 58.9%,
+    rgba(0, 0, 0, 0.394) 64.3%,
+    rgba(0, 0, 0, 0.468) 69.3%,
+    rgba(0, 0, 0, 0.54) 74.1%,
+    rgba(0, 0, 0, 0.607) 78.8%,
+    rgba(0, 0, 0, 0.668) 83.6%,
+    rgba(0, 0, 0, 0.721) 88.7%,
+    rgba(0, 0, 0, 0.762) 94.1%,
+    rgba(0, 0, 0, 0.79) 100%
+  );
+  transform: translateY(-50%);
+  transition: transform calc(700ms * 2) cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.card:nth-child(1):before {
+  background-image: url(../images/scout-tile.png?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=320&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+}
+.card:nth-child(2):before {
+  background-image: url(../images/pippa-tile.png?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=320&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+}
+.card:nth-child(3):before {
+  background-image: url(../images/albion-tile.png?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=320&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+}
+.card:nth-child(4):before {
+  background-image: url(../images/luna-tile.png?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=320&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  transition: transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 1;
+}
+.content > * + * {
+  margin-top: 1rem;
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.copy {
+  font-family: "Cardo", serif;
+  font-size: 1.125rem;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+@media (hover: hover) and (min-width: 600px) {
+  .card:after {
+    transform: translateY(0);
+  }
+
+  .content {
+    transform: translateY(calc(100% - 4.5rem));
+  }
+  .content > *:not(.title) {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: transform 700ms cubic-bezier(0.19, 1, 0.22, 1), opacity 700ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .card:hover,
+  .card:focus-within {
+    align-items: center;
+  }
+  .card:hover:before,
+  .card:focus-within:before {
+    transform: translateY(-4%);
+  }
+  .card:hover:after,
+  .card:focus-within:after {
+    transform: translateY(-50%);
+  }
+  .card:hover .content,
+  .card:focus-within .content {
+    transform: translateY(0);
+  }
+  .card:hover .content > *:not(.title),
+  .card:focus-within .content > *:not(.title) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(700ms / 8);
+  }
+
+  .card:focus-within:before,
+  .card:focus-within:after,
+  .card:focus-within .content,
+  .card:focus-within .content > *:not(.title) {
+    transition-duration: 0s;
+  }
+}
+
+/* -------------- */
+/* - Email Icon - */
+/* -------------- */
+
+  .st0{fill:#5CA4A9;}
+  .st1{fill:#E6EBE0;}
+  .st2{fill:#CBCCCA;}
+  .st3{fill:#ED6A5A;}
+  .st4{fill:#F4F1BB;}
+
+#mail-icon {
+  width:120px;
+  cursor: pointer;
+}
+
+/* ------------- */
+/* Cat Honeycomb */
+/* ------------- */
+
+/* Thanks to dmac37 for this hex technique */
+@import url(https://fonts.googleapis.com/css?family=Lato:300);
+/* Variables */
+.hex-container h2 {
+  font-family: 'Lato', sans-serif;
+  font-size: 4em;
+  font-weight: 300;
+  text-align: center;
+  margin: 100px 10px 0 10px;
+}
+
+.cat-hexagons {
+  margin: 0 auto;
+  text-align: center;
+  background-color: #f0f2f5;
+  padding: 2rem 0;
+  margin-top: 2rem;
+  margin-bottom: 16rem;
+}
+
+.cat-container {
+  width: 996px;
+  margin: auto;
+}
+
+.hex_row_even {
+  display: inline-block;
+  margin: 0 auto -275px auto;
+  overflow: hidden;
+}
+
+.hex_row_odd {
+  display: inline-block;
+  margin: 0 auto -275px auto;
+  overflow: hidden;
+}
+
+.center {
+  float: left;
+  margin: 20px 10px;
+  width: 220px;
+}
+
+.hexagon {
+  -moz-transform: rotate(120deg);
+  -ms-transform: rotate(120deg);
+  -webkit-transform: rotate(120deg);
+  transform: rotate(120deg);
+  cursor: pointer;
+  height: 440px;
+  overflow: hidden;
+  visibility: hidden;
+  width: 220px;
+}
+
+.hex1 {
+  -moz-transform: rotate(-60deg);
+  -ms-transform: rotate(-60deg);
+  -webkit-transform: rotate(-60deg);
+  transform: rotate(-60deg);
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.hex2 {
+  -moz-transform: rotate(-60deg);
+  -ms-transform: rotate(-60deg);
+  -webkit-transform: rotate(-60deg);
+  transform: rotate(-60deg);
+  height: 100%;
+  position: relative;
+  visibility: visible;
+  width: 100%;
+}
+
+.hex2[style] {
+  background-size: cover !important;
+}
+
+.desc {
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.5em;
+  font-weight: 300;
+  height: 440px;
+  line-height: 1em;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  visibility: visible;
+  width: 200px;
+  padding: 0px 10px;
+}
+.desc.base {
+  background: rgba(230, 0, 98, 0.75);
+}
+.desc.one {
+  background: rgba(252, 171, 55, 0.75);
+}
+.desc.two {
+  background: rgba(169, 160, 50, 0.75);
+}
+.desc.three {
+  background: rgba(83, 70, 54, 0.75);
+}
+.desc h2 {
+  margin: 165px 20px 0 20px;
+  font-size: 1.2em;
+}
+.desc p {
+  font-size: .5em;
+  text-transform: lowercase;
+  margin: auto;
+}
+
