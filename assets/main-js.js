@@ -1,3 +1,40 @@
+//Light Mode / Dark Mode
+
+console.log("js is running");
+
+document.addEventListener('DOMContentLoaded', function () {
+  const body = document.body;
+  const toggleBtn = document.getElementById('mode-toggle');
+
+  // Safety check to ensure the button exists
+  if (!toggleBtn) return;
+
+  // Load user's saved preference
+  if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark-mode');
+    toggleBtn.textContent = 'Light Mode';
+  } else {
+    toggleBtn.textContent = 'Dark Mode';
+  }
+
+  // Toggle dark mode on click
+  toggleBtn.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    const mode = body.classList.contains('dark-mode') ? 'dark' : 'light';
+    localStorage.setItem('theme', mode);
+
+    // Update button text and save theme to localStorage
+    if (body.classList.contains('dark-mode')) {
+      toggleBtn.textContent = 'Light Mode';
+      localStorage.setItem('theme', 'dark');
+    } else {
+      toggleBtn.textContent = 'Dark Mode';
+      localStorage.setItem('theme', 'light');
+    }
+  });
+});
+
+
 //Cat Cards
 
 $(document).ready(function () {
@@ -34,50 +71,54 @@ $(document).ready(function () {
 
 // Email Icon
 
-var line1 = $('#env-line-1');
-var line2 = $('#env-line-2');
-var line3 = $('#env-line-3');
-var mailIcon = $('#mail-icon');
-var envLid = $('#env-lid');
-var envPaper = $('#env-paper');
+$(document).ready(function () {
+  const line1 = $('#env-line-1');
+  const line2 = $('#env-line-2');
+  const line3 = $('#env-line-3');
+  const mailIcon = $('#mail-icon');
+  const envLid = $('#env-lid');
+  const envPaper = $('#env-paper');
 
-var tl = new TimelineLite({
-  paused:true,
-});
+  const tl = gsap.timeline({
+    paused: true,
+    defaults: { ease: "back.out(1.7)" }
+  });
 
-TweenLite.defaultEase = Back.easeOut;
-  
-tl 
-  .to(envLid, 0.3, {
-    scaleY:-1,
-    y: 1.5,
+  tl.to(envLid, {
+      duration: 0.3,
+      scaleY: -1,
+      y: 1.5
+    })
+    .fromTo(envPaper, {
+      transformOrigin: "50% 100%",
+      scaleY: 0
+    }, {
+      duration: 0.4,
+      scaleY: 1
+    }, "-=0.25")
+    .fromTo([line1, line2, line3], {
+      transformOrigin: "50% 50%",
+      scaleX: 0
+    }, {
+      duration: 0.3,
+      scaleX: 1,
+      stagger: -0.09
+    });
+
+  $(mailIcon).on('click', function (e) {
+    e.preventDefault();
+
+    const isToggled = $(this).hasClass('toggled');
+
+    if (isToggled) {
+      tl.reverse();
+    } else {
+      tl.play().then(() => {
+        // Once animation completes forward, open email
+        window.location.href = 'mailto:jonathonblevins@gmail.com';
+      });
     }
-  )
-  .fromTo(envPaper, 0.4, {
-    transformOrigin: "50% 100%",
-    scaleY:0,
-  },{
-    scaleY: 1,
-  }, "=-0.25")
-  .staggerFromTo([line1, line2, line3], 0.3, {
-    transformOrigin: "50% 50%",
-    scaleX: 0
-  },{
-    scaleX: 1,
-  },  -0.09)
 
-
-
-$(mailIcon).click(function(){
-  
-  if ( $(this).hasClass('toggled') ) {
-    tl.reverse();
-  } 
-  
-  else {
-    tl.play();
-  }
-  
-  $(this).toggleClass('toggled');
-  
+    $(this).toggleClass('toggled');
+  });
 });

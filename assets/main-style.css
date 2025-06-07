@@ -1,10 +1,69 @@
-/* Base Styles */
-body.body {
+/* Light/Dark Mode Setup */
+body {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+  --bg: #f5f7fa;
+  --text: #333;
+  --accent: #1a1a2e;
+  --subtle: #555;
+  --panel: #fff;
+  --footer: #222;
+  --footer-text: #ccc;
+  --skills-bg: #f0f2f5;
+  --card-bg: whitesmoke;
+  --button-bg: #e94560;
+  --button-hover: #d73753;
+  --email-fill-0: #5CA4A9;
+  --email-fill-1: #E6EBE0;
+  --email-fill-2: #CBCCCA;
+  --email-fill-3: #ED6A5A;
+  --email-fill-4: #F4F1BB;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  --bg: #0e0e10;
+  --text: #eee;
+  --accent: #c6c9ff;
+  --subtle: #bbb;
+  --panel: #1c1c24;
+  --footer: #111;
+  --footer-text: #888;
+  --skills-bg: #19191d;
+  --card-bg: #1e1e22;
+  --button-bg: #c7384f;
+  --button-hover: #a83242;
+  --email-fill-0: #88c4c7;
+  --email-fill-1: #ccc;
+  --email-fill-2: #aaa;
+  --email-fill-3: #f08880;
+  --email-fill-4: #e4dc80;
+}
+
+/* Update color usage throughout to use CSS variables */
+body.body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  background-color: #f5f7fa;
-  color: #333;
+}
+
+.mode-toggle {
+  background-color: var(--button-bg);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 1rem auto;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.mode-toggle:hover {
+  background-color: var(--button-hover);
 }
 
 .container {
@@ -16,8 +75,8 @@ body.body {
 
 /* Header */
 .header {
-  background-color: #1a1a2e;
-  color: #fff;
+  background-color: var(--accent);
+  color: var(--panel);
   text-align: center;
 }
 
@@ -28,7 +87,8 @@ body.body {
 
 .tagline {
   font-size: 1.1rem;
-  color: #c4c4c4;
+  /* color: var(--subtle); */
+  margin-bottom: 2em;
 }
 
 /* Hero Section */
@@ -45,19 +105,19 @@ body.body {
   height: 140px;
   object-fit: cover;
   border-radius: 50%;
-  border: 4px solid #1a1a2e;
+  border: 4px solid var(--accent);
 }
 
 .section-title {
   font-size: 1.6rem;
-  color: #1a1a2e;
+  color: var(--accent);
   margin-bottom: 0.75rem;
 }
 
 .intro-text {
   max-width: 700px;
   font-size: 1rem;
-  color: #555;
+  color: var(--subtle);
 }
 
 /* Experience Section */
@@ -72,12 +132,12 @@ body.body {
 .job-title {
   font-weight: bold;
   font-size: 1.2rem;
-  color: #111;
+  color: var(--text);
 }
 
 .job-company {
   font-size: 1.1rem;
-  color: #111;
+  color: var(--text);
 }
 
 .job-dates {
@@ -88,7 +148,7 @@ body.body {
 
 .job-description {
   margin-top: 0.5rem;
-  color: #444;
+  color: var(--subtle);
 }
 
 /* Contact CTA */
@@ -98,8 +158,8 @@ body.body {
 }
 
 .contact-container {
-  background-color: #1a1a2e;
-  color: #fff;
+  background-color: var(--accent);
+  color: var(--panel);
   text-align: center;
   padding: 2rem 1rem;
   border-radius: 12px;
@@ -108,17 +168,16 @@ body.body {
 
 .contact-title {
   font-size: 1.6rem;
-  color: #fff;
+  color: var(--panel);
   margin-bottom: 0.75rem;
 }
 
 .contact-text {
   font-size: 1rem;
-  margin-bottom: 2rem;
 }
 
 .contact-button {
-  background-color: #e94560;
+  background-color: var(--button-bg);
   color: #fff;
   text-decoration: none;
   padding: 0.75rem 1.5rem;
@@ -129,15 +188,15 @@ body.body {
 }
 
 .contact-button:hover {
-  background-color: #d73753;
+  background-color: var(--button-hover);
 }
 
 /* Footer */
 .footer {
   text-align: center;
   padding: 1rem;
-  background-color: #0f0f1c;
-  color: #aaa;
+  background-color: var(--footer);
+  color: var(--footer-text);
   font-size: 0.9rem;
   margin-top: 2rem;
 }
@@ -159,7 +218,7 @@ body.body {
 
 /* Skills Section */
 .skills {
-  background-color: #f0f2f5;
+  background-color: var(--skills-bg);
   padding: 2rem 0;
   margin-top: 2rem;
 }
@@ -174,13 +233,13 @@ body.body {
 }
 
 .skill-item {
-  background-color: #fff;
+  background-color: var(--panel);
+  color: var(--text);
+  border-left: 4px solid var(--accent);
   padding: 1rem 1.25rem;
-  border-left: 4px solid #1a1a2e;
   border-radius: 6px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   font-size: 1rem;
-  color: #333;
 }
 
 @media (min-width: 600px) {
@@ -273,8 +332,8 @@ body.body {
   padding: 1rem;
   width: 80%;
   text-align: center;
-  color: whitesmoke;
-  background-color: whitesmoke;
+  background-color: var(--card-bg);
+  color: var(--text); 
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
               0 2px 2px rgba(0, 0, 0, 0.1),
               0 4px 4px rgba(0, 0, 0, 0.1),
@@ -420,11 +479,11 @@ body.body {
 /* - Email Icon - */
 /* -------------- */
 
-  .st0{fill:#5CA4A9;}
-  .st1{fill:#E6EBE0;}
-  .st2{fill:#CBCCCA;}
-  .st3{fill:#ED6A5A;}
-  .st4{fill:#F4F1BB;}
+.st0 { fill: var(--email-fill-0); }
+.st1 { fill: var(--email-fill-1); }
+.st2 { fill: var(--email-fill-2); }
+.st3 { fill: var(--email-fill-3); }
+.st4 { fill: var(--email-fill-4); }
 
 #mail-icon {
   width:120px;
@@ -438,6 +497,7 @@ body.body {
 /* Thanks to dmac37 for this hex technique */
 @import url(https://fonts.googleapis.com/css?family=Lato:300);
 /* Variables */
+/*
 .hex-container h2 {
   font-family: 'Lato', sans-serif;
   font-size: 4em;
@@ -550,4 +610,4 @@ body.body {
   text-transform: lowercase;
   margin: auto;
 }
-
+*/
