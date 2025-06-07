@@ -1,41 +1,68 @@
-//Light Mode / Dark Mode
+// Light Mode / Dark Mode
 
-console.log("js is running");
+console.log("Welcome to the resume page!");
 
 document.addEventListener('DOMContentLoaded', function () {
+  // --- Dark Mode Logic ---
   const body = document.body;
   const toggleBtn = document.getElementById('mode-toggle');
 
-  // Safety check to ensure the button exists
-  if (!toggleBtn) return;
-
-  // Load user's saved preference
-  if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark-mode');
-    toggleBtn.textContent = 'Light Mode';
-  } else {
-    toggleBtn.textContent = 'Dark Mode';
-  }
-
-  // Toggle dark mode on click
-  toggleBtn.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const mode = body.classList.contains('dark-mode') ? 'dark' : 'light';
-    localStorage.setItem('theme', mode);
-
-    // Update button text and save theme to localStorage
-    if (body.classList.contains('dark-mode')) {
+  if (toggleBtn) {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-mode');
       toggleBtn.textContent = 'Light Mode';
-      localStorage.setItem('theme', 'dark');
     } else {
       toggleBtn.textContent = 'Dark Mode';
-      localStorage.setItem('theme', 'light');
     }
+
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      toggleBtn.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    });
+  }
+
+  // --- Slider JS ---
+  const slider = document.querySelector('.slider-track');
+  const leftArrow = document.querySelector('.arrow.left');
+  const rightArrow = document.querySelector('.arrow.right');
+
+  if (!slider || !leftArrow || !rightArrow) {
+    console.warn('Slider elements not found.');
+    return;
+  }
+
+  const jobCard = document.querySelector('.job');
+
+  leftArrow.addEventListener('click', () => {
+    slider.scrollBy({ left: -(jobCard.offsetWidth + 24), behavior: 'smooth' });
   });
+
+  rightArrow.addEventListener('click', () => {
+    slider.scrollBy({ left: jobCard.offsetWidth + 24, behavior: 'smooth' });
+  });
+
+  /*
+  // Autoplay with pause on hover
+  let autoScroll = setInterval(() => {
+    slider.scrollBy({ left: slider.offsetWidth * 0.9, behavior: 'smooth' });
+  }, 8000);
+
+  slider.addEventListener('mouseenter', () => {
+    clearInterval(autoScroll);
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    autoScroll = setInterval(() => {
+      slider.scrollBy({ left: slider.offsetWidth * 0.9, behavior: 'smooth' });
+    }, 8000);
+  });
+  */
 });
 
-
-//Cat Cards
+// --- Cat Cards ---
 
 $(document).ready(function () {
   var color = "one";
@@ -69,7 +96,7 @@ $(document).ready(function () {
   );
 });
 
-// Email Icon
+// --- Email Icon Animation ---
 
 $(document).ready(function () {
   const line1 = $('#env-line-1');
@@ -114,7 +141,6 @@ $(document).ready(function () {
       tl.reverse();
     } else {
       tl.play().then(() => {
-        // Once animation completes forward, open email
         window.location.href = 'mailto:jonathonblevins@gmail.com';
       });
     }
