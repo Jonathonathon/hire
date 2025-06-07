@@ -1,4 +1,48 @@
 /* Light/Dark Mode Setup */
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  --bg: #e0e1dd;                /* Light background */
+  --text: #1b263b;              /* Dark navy for text */
+  --accent: #415a77;            /* Medium blue-gray for accents */
+  --accent-secondary: #131B23;  /* Gradient secondary color */
+  --subtle: #778da9;            /* Soft contrast text */
+  --panel: #ffffff;             /* Panels stay white */
+  --footer: #415a77;            /* Footer gets a richer accent */
+  --footer-text: #e0e1dd;       /* Light footer text */
+  --skills-bg: #f0f2f5;         /* Light gray background for skill sections */
+  --card-bg: #f7f8f9;           /* Very soft card background */
+  --button-bg: #1b263b;         /* Deep blue for buttons */
+  --button-hover: #5CA4A9;      /* Darkest blue on hover */
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  --email-fill-0: #5CA4A9;
+  --email-fill-1: #E6EBE0;
+  --email-fill-2: #CBCCCA;
+  --email-fill-3: #ED6A5A;
+  --email-fill-4: #F4F1BB;
+}
+
+body.dark-mode {
+  --bg: #0d1b2a;                /* Darkest background */
+  --text: #e0e1dd;              /* Light gray text */
+  --accent: #778da9;            /* Soft contrast for headers/accents */
+  --accent-secondary: #475465;  /* Gradient secondary color */
+  --subtle: #aab8c2;            /* Muted tone for subtler text */
+  --panel: #1b263b;             /* Deep panel background */
+  --footer: #1b263b;            /* Footer blends into the dark mode theme */
+  --footer-text: #e0e1dd;       /* Light footer text */
+  --skills-bg: #1b263b;         /* Slightly raised background for skills */
+  --card-bg: #192a3a;           /* Card slightly lighter than background */
+  --button-bg: #415a77;         /* Button pop color */
+  --button-hover: #778da9;      /* Hover effect for button */
+}
+
+/* Old Schema ------------ 
+
 body {
   box-sizing: border-box;
   margin: 0;
@@ -42,6 +86,8 @@ body.dark-mode {
   --email-fill-3: #f08880;
   --email-fill-4: #e4dc80;
 }
+
+----------------- */
 
 /* Update color usage throughout to use CSS variables */
 body.body {
@@ -157,6 +203,7 @@ body.body {
 
 }
 
+/* Old Contact Container 
 .contact-container {
   background-color: var(--accent);
   color: var(--panel);
@@ -164,6 +211,34 @@ body.body {
   padding: 2rem 1rem;
   border-radius: 12px;
   margin-top: 2rem;
+}
+  */
+
+.cta-container {
+  position: relative;
+  background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+  padding: 2.5rem;
+  border-radius: 24px 48px 24px 48px;
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  color: var(--light-text, #fff);
+  z-index: 1;
+  text-align: center;
+}
+
+.cta-container::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -30%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 70%);
+  filter: blur(40px);
+  z-index: 0;
 }
 
 .contact-title {
@@ -192,6 +267,7 @@ body.body {
 }
 
 /* Footer */
+
 .footer {
   text-align: center;
   padding: 1rem;
@@ -217,6 +293,7 @@ body.body {
 }
 
 /* Skills Section */
+
 .skills {
   background-color: var(--skills-bg);
   padding: 2rem 0;
@@ -240,6 +317,14 @@ body.body {
   border-radius: 6px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   font-size: 1rem;
+}
+
+/* Quick Override for the li Shadows */
+
+body.dark-mode .skill-item {
+  box-shadow:
+    0 2px 4px rgba(255, 255, 255, 0.05),
+    0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 @media (min-width: 600px) {
@@ -417,17 +502,19 @@ body.body {
   margin-top: 1rem;
 }
 
-.title {
+.card .content .title {
+  color: #fff;
   font-size: 1.3rem;
   font-weight: bold;
   line-height: 1.2;
 }
 
-.copy {
+.card .content .copy {
   font-family: "Cardo", serif;
   font-size: 1.125rem;
   font-style: italic;
   line-height: 1.35;
+  color: #fff;
 }
 
 @media (hover: hover) and (min-width: 600px) {
