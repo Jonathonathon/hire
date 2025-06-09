@@ -28,38 +28,72 @@ document.addEventListener('DOMContentLoaded', function () {
   const slider = document.querySelector('.slider-track');
   const leftArrow = document.querySelector('.arrow.left');
   const rightArrow = document.querySelector('.arrow.right');
+  const dotsContainer = document.querySelector('.slider-dots');
+  const jobCards = Array.from(document.querySelectorAll('.job'));
 
-  if (!slider || !leftArrow || !rightArrow) {
-    console.warn('Slider elements not found.');
+  if (!slider || !leftArrow || !rightArrow || !dotsContainer) {
+    console.warn('Slider or dot elements not found.');
     return;
   }
 
-  const jobCard = document.querySelector('.job');
+  const jobCard = jobCards[0];
+  let currentIndex = 0;
+
+  function updateDots(index) {
+    const dots = dotsContainer.querySelectorAll('.dot');
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  function scrollToIndex(index) {
+    const offset = index * (jobCard.offsetWidth + 24); // adjust 24px margin as needed
+    slider.scrollTo({ left: offset, behavior: 'smooth' });
+    currentIndex = index;
+    updateDots(currentIndex);
+  }
+
+  function createDots() {
+    jobCards.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if (index === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => scrollToIndex(index));
+      dotsContainer.appendChild(dot);
+    });
+  }
 
   leftArrow.addEventListener('click', () => {
-    slider.scrollBy({ left: -(jobCard.offsetWidth + 24), behavior: 'smooth' });
+    if (currentIndex > 0) {
+      scrollToIndex(currentIndex - 1);
+    } else {
+      scrollToIndex(jobCards.length - 1);
+    }
   });
 
   rightArrow.addEventListener('click', () => {
-    slider.scrollBy({ left: jobCard.offsetWidth + 24, behavior: 'smooth' });
+    if (currentIndex < jobCards.length - 1) {
+      scrollToIndex(currentIndex + 1);
+    } else {
+      scrollToIndex(0);
+    }
   });
 
-  /*
-  // Autoplay with pause on hover
-  let autoScroll = setInterval(() => {
-    slider.scrollBy({ left: slider.offsetWidth * 0.9, behavior: 'smooth' });
-  }, 8000);
-
-  slider.addEventListener('mouseenter', () => {
-    clearInterval(autoScroll);
+  slider.addEventListener('scroll', () => {
+    const scrollLeft = slider.scrollLeft;
+    const cardWidth = jobCard.offsetWidth + 24;
+    const newIndex = Math.round(scrollLeft / cardWidth);
+    if (newIndex !== currentIndex) {
+      currentIndex = newIndex;
+      updateDots(currentIndex);
+    }
   });
 
-  slider.addEventListener('mouseleave', () => {
-    autoScroll = setInterval(() => {
-      slider.scrollBy({ left: slider.offsetWidth * 0.9, behavior: 'smooth' });
-    }, 8000);
+  window.addEventListener('resize', () => {
+    scrollToIndex(currentIndex);
   });
-  */
+
+  createDots();
 });
 
 // --- Cat Cards ---
@@ -141,7 +175,7 @@ $(document).ready(function () {
       tl.reverse();
     } else {
       tl.play().then(() => {
-        window.location.href = 'mailto:jonathonblevins@gmail.com';
+        window.location.href = 'mailto:jonathonblevins@example.com';
       });
     }
 
