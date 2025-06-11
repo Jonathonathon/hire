@@ -606,6 +606,30 @@ body.dark-mode .card::after {
   line-height: 1.2;
 }
 
+.title-arrow {
+  display: inline-block;         
+  transition: transform 0.5s ease-in;
+  margin-left: 0.5em;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+.card:hover .title-arrow {
+  animation: none;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.title-arrow.flipped {
+  transform: rotate(180deg);
+}
+
 .card .content .copy {
   font-family: "Cardo", serif;
   font-size: 1.125rem;
@@ -683,6 +707,17 @@ body.dark-mode .card::after {
 #mail-icon {
   width:120px;
   cursor: pointer;
+}
+
+/* -------------- */
+/* --- Burner --- */
+/* -------------- */
+
+.burner {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
 }
 
 /* ------------- */

@@ -157,10 +157,22 @@ document.addEventListener('DOMContentLoaded', function () {
     $(this).toggleClass('toggled');
   });
 
-  // --- Glowing WebGL Background ---
+  // --- Arrow Symbol Toggle ---
+  document.querySelectorAll('.card').forEach(card => {
+    const title = card.querySelector('.title-arrow');
 
-  /* 
-  const header = document.querySelector('.header');
+    card.addEventListener('mouseover', () => {
+      title.classList.add('flipped');
+    });
+
+    card.addEventListener('mouseout', () => {
+      title.classList.remove('flipped');
+    });
+  });
+
+
+  // --- Glowing WebGL Background ---
+  const header = document.querySelector('.burner');
   if (header) {
     const canvas = document.createElement('canvas');
     header.appendChild(canvas);
@@ -305,6 +317,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     new WebGLHandler(canvas, fragmentShaderSource);
   }
-  */
+
 });
 
