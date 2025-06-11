@@ -48,6 +48,10 @@ body.body {
   line-height: 1.6;
 }
 
+.body a {
+  color: var(--accent);
+}
+
 .mode-toggle {
   background-color: var(--button-bg);
   color: #fff;
@@ -76,27 +80,43 @@ body.body {
 /* Header */
 
 .header {
-  background-color: var(--accent);
-  color: var(--panel);
-  text-align: center;
+  position: relative;
   width: 100%;
+  /*height: 350px;*/
+  overflow: hidden;
+  background-color: var(--panel);
 }
 
 .header-container {
-  width: 100%;
+  position: relative;
+  z-index: 1;
   padding: 1rem 0;
   margin: 0 auto;
+  width: 100%;
+  height: 100%;
   box-sizing: border-box;
+  text-align: center;
+}
+
+.header canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .site-title {
   font-size: 2rem;
-  margin-bottom: 0rem;
+  line-heigth: 3rem;
+  margin: 4rem 0 0 0;
 }
 
 .tagline {
   font-size: 0.8rem;
-  margin-bottom: 2em;
+  margin: 0 0 2em 0;
 }
 
 /* Responsive */
@@ -104,9 +124,10 @@ body.body {
 
   .site-title {
     font-size: 4rem;
+    line-height: 6rem;
   }
 
-  .tagline {
+  .tagline, .intro {
     font-size: 1.1rem;
   }
 }
