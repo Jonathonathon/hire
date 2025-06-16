@@ -25,6 +25,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // ----- Email me Button -----
+  $('#email-button').on('click', () => {
+    window.location.href = 'mailto:jonathonblevins@gmail.com';
+  });
+
   // --- Slider JS ---
   const slider = document.querySelector('.slider-track');
   const leftArrow = document.querySelector('.arrow.left');
@@ -146,30 +151,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
   $(mailIcon).on('click', function (e) {
     e.preventDefault();
+
     const isToggled = $(this).hasClass('toggled');
+
     if (isToggled) {
       tl.reverse();
     } else {
-      tl.play().then(() => {
-        window.location.href = 'mailto:jonathonblevins@example.com';
-      });
+      tl.play();
     }
+
     $(this).toggleClass('toggled');
   });
 
   // --- Arrow Symbol Toggle ---
-  document.querySelectorAll('.card').forEach(card => {
-    const title = card.querySelector('.title-arrow');
+  document.querySelectorAll('.cat-card').forEach(card => {
+    const wrapper = card.querySelector('.arrow-wrapper');
 
-    card.addEventListener('mouseover', () => {
-      title.classList.add('flipped');
-    });
+    function toggleCard() {
+      const expanded = card.classList.toggle('expanded');
+      wrapper.classList.toggle('flipped', expanded);
+    }
 
-    card.addEventListener('mouseout', () => {
-      title.classList.remove('flipped');
+    card.addEventListener('click', toggleCard);
+
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault(); // Prevent scrolling on Space
+        toggleCard();
+      }
     });
   });
-
 
   // --- Glowing WebGL Background ---
   const header = document.querySelector('.burner');
