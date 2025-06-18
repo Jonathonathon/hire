@@ -25,6 +25,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // ------------ Display images on click -----------------
+  document.querySelectorAll('.case figure img').forEach(img => {
+    img.addEventListener('click', () => {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      modalImg.src = img.src;
+      modal.classList.add('active');
+    });
+  });
+
+  document.getElementById('imageModal').addEventListener('click', () => {
+    document.getElementById('imageModal').classList.remove('active');
+  });
+
   // ----- Email me Button -----
   $('#email-button').on('click', () => {
     window.location.href = 'mailto:jonathonblevins@gmail.com';
@@ -35,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const leftArrow = document.querySelector('.arrow.left');
   const rightArrow = document.querySelector('.arrow.right');
   const dotsContainer = document.querySelector('.slider-dots');
-  const jobCards = Array.from(document.querySelectorAll('.job'));
+  const jobCards = Array.from(document.querySelectorAll('.case'));
 
   if (slider && leftArrow && rightArrow && dotsContainer && jobCards.length) {
     const jobCard = jobCards[0];

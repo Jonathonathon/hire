@@ -389,21 +389,21 @@ body.body {
 }
 
 .slider-wrapper {
-  overflow-x: auto;
+  overflow-x: hidden;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  flex: 1;
-  /* padding: 1rem 0 0 0; */
+  width: 100%;
 }
 
 .slider-track {
   display: flex;
-  gap: 1.5rem;
+  gap: 24px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   padding: 1rem 0;
   scrollbar-width: none;
+  width: 100%;
 }
 
 .experience-container {
@@ -411,17 +411,36 @@ body.body {
   max-width: 1200px;
 }
 
-.job {
-  margin-bottom: 2rem;
-  flex: 0 0 100%;
-  scroll-snap-align: center;
+.case {
+  flex: 0 0 auto;
+  margin: 0 0 2rem 0;
+  padding: 1.5rem;
+  box-sizing: border-box;
+
   background-color: var(--panel);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+
+  scroll-snap-align: center;
+  width: 100%;
+}
+
+.case > figure {
+  margin: 2rem 0 0;
+  overflow: hidden;
+  filter: brightness(0.95);
+  border-radius: 0.5em;
+}
+
+.case > figure > img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  display: block;
+  object-fit: contain; 
+  border-radius: 0; 
+  max-height: none;
   margin: 0 auto;
-  box-sizing: border-box;
-  position: relative;
 }
 
 .arrow {
@@ -453,27 +472,57 @@ body.body {
   right: 0;
 }
 
-.experience .job-title {
+.experience .case-title {
   font-weight: bold;
   font-size: 1.2rem;
   color: var(--text);
 }
 
-.experience .job-company {
+.experience .case-company {
   font-size: 1.1rem;
   color: var(--text);
 }
 
-.experience .job-dates {
+.experience .case-dates {
   font-style: italic;
   font-size: 0.95rem;
   color: #777;
 }
 
-.experience .job-description {
+.experience .case-description {
   margin-top: 0.5rem;
   color: var(--subtle);
 }
+
+/* ------------- Image Modal Overlay --------------- */
+
+.image-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.image-modal-overlay.active {
+  display: flex;
+}
+
+.image-modal-overlay img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ------------- Responsive --------------- */
 
 @media (max-width: 768px) {
 
@@ -494,9 +543,13 @@ body.body {
     padding: 1rem 0;
   }
 
-  .job {
-    max-width: 100%;
+  .case {
     padding: 1rem;
+  }
+
+  .case > figure > img {
+    border-radius: 0.5em;
+    max-height: none;
   }
 
   .arrow {
