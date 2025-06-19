@@ -437,13 +437,14 @@ body.body {
   width: 100%;
 }
 
-.case > figure {
+.case figure {
   margin: 2rem 0 0;
   overflow: hidden;
   border-radius: 0.5em;
+
 }
 
-.case > figure > img {
+.case figure img {
   width: 100%;
   max-width: 500px;
   height: auto;
@@ -451,8 +452,14 @@ body.body {
   object-fit: contain; 
   border-radius: 0; 
   max-height: 500px;
-  positoin: center center;
+  position: center;
   margin: 0 auto;
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.case figure img:hover {
+  transform: scale(1.05);
 }
 
 .arrow {
