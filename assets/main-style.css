@@ -440,7 +440,6 @@ body.body {
 .case > figure {
   margin: 2rem 0 0;
   overflow: hidden;
-  filter: brightness(0.95);
   border-radius: 0.5em;
 }
 
@@ -451,7 +450,8 @@ body.body {
   display: block;
   object-fit: contain; 
   border-radius: 0; 
-  max-height: none;
+  max-height: 500px;
+  positoin: center center;
   margin: 0 auto;
 }
 
@@ -1005,6 +1005,105 @@ body.dark-mode .card::after {
   background-color: var(--button-hover);
   outline: 2px solid var(--accent-secondary);
   box-shadow: 0 0 0 3px rgba(65, 90, 119, 0.3);
+}
+
+/* ----------------------------------------------------- */
+/* -------------- The Nonagon! ------------------------- */
+/* ----------------------------------------------------- */
+
+.hexagon-container {
+  padding-top: 2rem;
+  display: grid;
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+  background: var(--skills-bg);
+  color: var(--text);
+  place-content: center;
+  justify-items: center;
+}
+
+/* CSS variable polyfill for --progress */
+@property --progress {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@keyframes progress {
+  to {
+    --progress: 1;
+  }
+}
+
+.hexagon {
+  grid-area: 1 / 1;
+  width: clamp(100px, 90vmin, 300px);
+  aspect-ratio: 1;
+  background: currentColor;
+
+  animation: progress 7s linear infinite;
+
+  --border-size: 1.5%;
+  --duration: 7s;
+  --open-from: 0.5;
+
+  --o: calc(var(--progress) * 50%);
+  --i: max(0%, calc(var(--o) - var(--border-size)));
+
+  clip-path: polygon(
+    calc(50% + var(--o) * cos(  0deg)) calc(50% + var(--o) * sin(  0deg)),
+    calc(50% + var(--o) * cos( 60deg)) calc(50% + var(--o) * sin( 60deg)),
+    calc(50% + var(--o) * cos(120deg)) calc(50% + var(--o) * sin(120deg)),
+    calc(50% + var(--o) * cos(180deg)) calc(50% + var(--o) * sin(180deg)),
+    calc(50% + var(--o) * cos(240deg)) calc(50% + var(--o) * sin(240deg)),
+    calc(50% + var(--o) * cos(300deg)) calc(50% + var(--o) * sin(300deg)),
+    calc(50% + var(--o) * cos(360deg)) calc(50% + var(--o) * sin(360deg)),
+    calc(50% + var(--i) * cos(360deg)) calc(50% + var(--i) * sin(360deg)),
+    calc(50% + var(--i) * cos(300deg)) calc(50% + var(--i) * sin(300deg)),
+    calc(50% + var(--i) * cos(240deg)) calc(50% + var(--i) * sin(240deg)),
+    calc(50% + var(--i) * cos(180deg)) calc(50% + var(--i) * sin(180deg)),
+    calc(50% + var(--i) * cos(120deg)) calc(50% + var(--i) * sin(120deg)),
+    calc(50% + var(--i) * cos( 60deg)) calc(50% + var(--i) * sin( 60deg)),
+    calc(50% + var(--i) * cos(  0deg)) calc(50% + var(--i) * sin(  0deg))
+  );
+
+  --a: calc(clamp(0, (var(--progress) - var(--open-from)) / (1 - var(--open-from)), 1) * 30deg);
+
+  mask-image: conic-gradient(
+    #0000 calc(var(--a)),
+    #000 0 calc(60deg - var(--a)), #0000 0 calc(60deg + var(--a)),
+    #000 0 calc(120deg - var(--a)), #0000 0 calc(120deg + var(--a)),
+    #000 0 calc(180deg - var(--a)), #0000 0 calc(180deg + var(--a)),
+    #000 0 calc(240deg - var(--a)), #0000 0 calc(240deg + var(--a)),
+    #000 0 calc(300deg - var(--a)), #0000 0 calc(300deg + var(--a)),
+    #000 0 calc(360deg - var(--a)), #0000 0
+  );
+}
+
+.hexagon:nth-child(2n) {
+  rotate: 30deg;
+}
+
+/* Fallback for environments without sibling-index support */
+@supports not (scale: sibling-index()) {
+  .hexagon-container {
+    --sibling-count: 9;
+  }
+
+  .hexagon {
+    --sibling-index: 1;
+    animation-delay: calc(-1 * 7s * (var(--sibling-index) - 1) / var(--sibling-count));
+  }
+
+  .hexagon:nth-child(2) { --sibling-index: 2; }
+  .hexagon:nth-child(3) { --sibling-index: 3; }
+  .hexagon:nth-child(4) { --sibling-index: 4; }
+  .hexagon:nth-child(5) { --sibling-index: 5; }
+  .hexagon:nth-child(6) { --sibling-index: 6; }
+  .hexagon:nth-child(7) { --sibling-index: 7; }
+  .hexagon:nth-child(8) { --sibling-index: 8; }
+  .hexagon:nth-child(9) { --sibling-index: 9; }
 }
 
 /* ------------- */
