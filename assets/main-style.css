@@ -147,6 +147,18 @@ body.body {
   gap: 1.5rem;
 }
 
+.hero-container #hiddenSquiggle {
+  opacity: 0;
+}
+
+#maks {
+  max-width: 250px;
+  max-height: 250px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .profile-image {
   width: 140px;
   height: 140px;
