@@ -343,5 +343,35 @@ document.addEventListener('DOMContentLoaded', function () {
     new WebGLHandler(canvas, fragmentShaderSource);
   }
 
+  // -- Spotify Playlist Codes
+
+  document.querySelectorAll(".swiper-slide").forEach((slide) => {
+    slide.addEventListener("click", () => {
+      const playlistId = slide.dataset.id;
+      const embedType = slide.dataset.type;
+      const embedURL = `https://open.spotify.com/embed/${embedType}/${playlistId}?utm_source=generator`;
+
+      document.getElementById("spotify-iframe").src = embedURL;
+    });
+  });
+
+  const swiperContainer = document.querySelector(".swiper");
+  if (swiperContainer) {
+    new Swiper(".swiper", {
+      effect: "coverflow",
+      centeredSlides: true,
+      slidesPerView: "auto",
+      grabCursor: true,
+      spaceBetween: 40,
+      coverflowEffect: {
+        rotate: 25,
+        stretch: 0,
+        depth: 50,
+        modifier: 1,
+        slideShadows: false,
+      },
+    });
+  }
+
 });
 

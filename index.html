@@ -14,10 +14,15 @@
       integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+  />
   
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="assets/main-js.js"></script>
+
 </head>
 
 <body class="body">
@@ -466,6 +471,10 @@
       </div>
     </section>
 
+    <!-- ----------------- -->
+    <!-- Cat Cards Section -->
+    <!-- ----------------- -->
+
     <section class="cat-cards">
       <div class="container cat-container">
         <h2>How Many Cats Do You Have?</h2>
@@ -481,7 +490,7 @@
           <div class="cat-card" tabindex="0">
             <div class="content">
               <h2 class="title">Pippa<span class="arrow-wrapper"><span class="title-arrow">&#8679;</span></span></h2>
-              <p class="copy">Our paraplegic rescue. Her shelter wanted to put her down because she'd never have a decent quality of life. When I'm very lucky, she doesn't bite me during bath time.</p>
+              <p class="copy">Our paraplegic rescue. Her shelter wanted to put her down because she'd never have a decent quality of life. More than a few of my arm scars are bath time bites.</p>
             </div>
           </div>
           <div class="cat-card" tabindex="0">
@@ -499,6 +508,58 @@
         </div>
       </div>
     </section>
+
+    <!-- --------------------- -->
+    <!-- Music Players Section -->
+    <!-- --------------------- -->
+
+    <section class="spotify-player">
+    <div class="container text-left">
+      <h2>What are you listening to?</h2>
+      <p>Enmy is my find of the year, but scroll through the album covers to see a few playlists and click the cover to queue it up.</p>
+    </div>
+
+    <div class="album-cover">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" data-id="3TVl38ouD2Q2k8c36lpswQ" data-type="playlist">
+            <img src="images/80s-playlist-image.jpg" alt="80s" />
+            <div class="overlay"><ion-icon name="logo-spotify"></ion-icon></div>
+          </div>
+          <div class="swiper-slide" data-id="7HTzuZ3SYzr2WoTUlQxNFG" data-type="playlist">
+            <img src="images/90s-playlist-image.jpg" alt="90s" />
+            <div class="overlay"><ion-icon name="logo-spotify"></ion-icon></div>
+          </div>
+          <div class="swiper-slide" data-id="4UOmWeGlogdlCtmPiy3jIZ" data-type="playlist">
+            <img src="images/breaking-benjamin-playlist-image.jpg" alt="Breaking Benjamin" />
+            <div class="overlay"><ion-icon name="logo-spotify"></ion-icon></div>
+          </div>
+          <div class="swiper-slide" data-id="09fX9hpRXuRXChFChOKU5L" data-type="playlist">
+            <img src="images/enmy-playlist-image.webp" alt="Enmy" />
+            <div class="overlay"><ion-icon name="logo-spotify"></ion-icon></div>
+          </div>
+          <div class="swiper-slide" data-id="1EsWiQl1BcFqxxnDqgVuW4" data-type="playlist">
+            <img src="images/gravity-kills-playlist-image.jpg" alt="Gravity Kills" />
+            <div class="overlay"><ion-icon name="logo-spotify"></ion-icon></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="music-embed-wrapper">
+      <iframe
+      id="spotify-iframe"
+      style="border-radius:12px"
+      src="https://open.spotify.com/embed/playlist/3TVl38ouD2Q2k8c36lpswQ?utm_source=generator"
+      width="100%"
+      height="80"
+      frameBorder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+    </div>
+  </section>
+
 
     <!-- 
     <section class="burner">
@@ -535,6 +596,8 @@
 <div class="image-modal-overlay" id="imageModal">
   <img src="" alt="Expanded Image" id="modalImage">
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
 </body>
 </html>
